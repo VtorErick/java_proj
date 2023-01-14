@@ -7,6 +7,7 @@ buildscript {
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+
     }
 }
 
@@ -26,8 +27,11 @@ repositories {
 
 dependencies {
     implementation('org.springframework.boot:spring-boot-starter-data-rest')
-    implementation("org.springframework.boot:spring-boot-starter-web")
-    testImplementation('org.springframework.boot:spring-boot-starter-test')
+	implementation("org.springframework.boot:spring-boot-starter-web")
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine' // <- No version
+    }
+
     testImplementation('junit:junit:4.+')
 }
 
